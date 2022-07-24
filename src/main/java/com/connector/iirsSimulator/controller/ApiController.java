@@ -5,6 +5,7 @@ import com.connector.iirsSimulator.dto.RescueDataResponse;
 import com.connector.iirsSimulator.service.RescueDataService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,8 +21,10 @@ public class ApiController {
 
     //조난자 기지국 정보 요청
     @PostMapping("/rescueDataReq")
-    public RescueDataResponse rescueDataRequest(@RequestBody RescueDataRequest rescueDataRequest) {
+    public ResponseEntity<RescueDataResponse> rescueDataRequest(@RequestBody RescueDataRequest rescueDataRequest) {
         log.info("[RECV] /rescueDataReq");
-        return rescueDataService.getRequestData(rescueDataRequest);
+        return ResponseEntity.ok(
+                rescueDataService.getRequestData(rescueDataRequest)
+        );
     }
 }
