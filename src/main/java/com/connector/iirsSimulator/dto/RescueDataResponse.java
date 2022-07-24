@@ -1,6 +1,5 @@
 package com.connector.iirsSimulator.dto;
 
-
 import lombok.*;
 
 @NoArgsConstructor
